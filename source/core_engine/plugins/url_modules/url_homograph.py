@@ -24,11 +24,11 @@ class Homograph :
         # 1st
 
         # Not Only ASCII : Suspicious
-        if not hostname.isascii():
+        if not hostname.isascii() :
             print("[ 1st ] Suspicious")
             return True
         # Only ASCII : Not Suspicious
-        else:
+        else :
             print("[ 1st ] OK")
             return False
 
@@ -39,18 +39,18 @@ class Homograph :
     def scan_hostname_punycode(self, hostname) :
         # 2nd
         
-        try:
+        try :
             punycode = hostname.encode('idna').decode('ascii')
             print(f"[ DEBUG ] Punycode : {punycode}")
             # Include Punycode : Suspicious
-            if "xn--" in punycode:
+            if "xn--" in punycode :
                 print("[ 2nd ] Suspicious")
                 return True
             # Not Include Punycode : Not Suspicious
-            else:
+            else :
                 print("[ 2nd ] OK")
                 return False
-        except UnicodeError as e:
+        except UnicodeError as e :
             print(f"[ DEBUG ] Fail to Encode Punycod ( \"idna\" ) : {e}")
             return False # To-Do
     
@@ -68,7 +68,7 @@ class Homograph :
         urlparse_result = urlparse(self.input_url)
         hostname = urlparse_result.hostname
 
-        if hostname is None:
+        if hostname is None :
             print("[ ERROR ] Can't Get \"Hostname\" from Input URL.")
             print(f">>>> Input URL : {self.input_url}")
             sys.exit(1)
