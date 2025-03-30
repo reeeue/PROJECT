@@ -59,7 +59,7 @@ class Homograph :
     OUT : 
     """
     def scan(self) :
-        print("Module Start.")
+        print("Module Start.\n")
 
         flag = False
 
