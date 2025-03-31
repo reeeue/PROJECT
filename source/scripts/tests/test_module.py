@@ -51,13 +51,21 @@ def scan(module_class, data_file_path, result_csv="test_module_result.csv") :
         writer.writeheader()
         writer.writerows(results)
 
+    total = len(results)
+    ok_count = sum(1 for result in results if result["result"] == "OK")
+    suspicious_count = sum(1 for result in results if result["result"] == "Suspicious")
+
+    print(f"\n[ ( TEST ) Result ]")
+    print(f"\n>>>> OK URLs / Total URLs : {ok_count} / {total}")
+    print(f"\n>>>> Suspicious URLs / Total URLs : {suspicious_count} / {total}")
+
     print(f"\nSuccess of \"TEST\" => {result_csv}\n")
 
 """
 Main
 """
 if __name__ == "__main__" :
-    from url_homograph import Homograph # Example : Url Modules - "url_homograph.py" ( Homograph )
+    from url_sub_domain import Sub_Domain # Example : Url Modules - "url_homograph.py" ( Homograph )
     
     data_file_path = "openphish_feed.txt"
-    scan(Homograph, data_file_path)
+    scan(Sub_Domain, data_file_path)
